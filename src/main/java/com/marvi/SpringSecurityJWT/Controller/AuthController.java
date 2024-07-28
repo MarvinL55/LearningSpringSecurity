@@ -19,16 +19,19 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    // Endpoint for user registration
     @PostMapping("/signup")
     public ResponseEntity<RequestRes> signup(@RequestBody RequestRes signUpRequest) {  
         return ResponseEntity.ok(authService.signUp(signUpRequest));
     }
     
+    // Endpoint for user user login
     @PostMapping("/signin")
     public ResponseEntity<RequestRes> signIn(@RequestBody RequestRes signInRequest) {  
         return ResponseEntity.ok(authService.signIn(signInRequest));
     }
 
+    // Endpoint for refresh JWT token
     @PostMapping("/refresh")
     public ResponseEntity<RequestRes> refresh(@RequestBody RequestRes refreshTokenRequest) {  
         return ResponseEntity.ok(authService.refreshToken(refreshTokenRequest));

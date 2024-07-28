@@ -20,40 +20,40 @@ public class OurUsers implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-    private String email;
-    private String password;
-    private String role;
+	private Long id; // user ID
+    private String email; // User email
+    private String password; // user password
+    private String role; // User role
 
 	@Override
 	public String getUsername() {
 		
-		return email;
+		return email; // Return email as username 
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return List.of(new SimpleGrantedAuthority(role));
+		return List.of(new SimpleGrantedAuthority(role)); // Return user role as authority
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return true;
+		return true; // Account is not expired
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;
+		return true; // Credentials are not expired 
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return true;
+		return true; // Credentials are not expired
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return true; // Account is enabled
 	}
 }

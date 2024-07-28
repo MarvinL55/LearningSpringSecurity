@@ -21,11 +21,13 @@ public class AdminUsers {
     @Autowired
     private ProductsRepo productsRepo;
 
+    // Public endpoints to get all the products
     @GetMapping("/public/products")
     public ResponseEntity<Object> getAllProducts() {
         return ResponseEntity.ok(productsRepo.findAll());
     }
 
+    // Admin only endpoint 
     @PostMapping("/admin/saveproducts")
     public ResponseEntity<Object> signup(@RequestBody RequestRes productRequest) {  
         Products productsToSave = new Products();
@@ -33,11 +35,13 @@ public class AdminUsers {
         return ResponseEntity.ok(productsRepo.save(productsToSave));
     }
 
+    // User only endpoint
     @GetMapping("/user/alone")
     public ResponseEntity<Object> userAlone() {
         return ResponseEntity.ok("Users alone can access this Api only");
     }
 
+    // Both of them could access this endpoint
     @GetMapping("/adminuser")
     public ResponseEntity<Object> bothAdminAndUsersApi() {
         return ResponseEntity.ok("Both users and admin can access this");
